@@ -12,8 +12,8 @@ const Home = () => {
       <Hero/>
       <Buttons/>
       <Models/>
-      <NewsLetter/>
       <FeedBack/>
+      <NewsLetter/>
     </div>
   )
 }
