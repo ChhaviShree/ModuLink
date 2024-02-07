@@ -9,7 +9,7 @@ import VendorRegistration from './Pages/VendorRegistration'
 
 function App() {
   return (
-    <div>
+    <div className='app'>
       <BrowserRouter>
       <Navbar/>
       <Routes>

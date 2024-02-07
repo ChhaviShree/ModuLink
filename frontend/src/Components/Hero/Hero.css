@@ -1,0 +1,79 @@
+.hero{
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.carousel{
+    width: 100%;
+    max-width: 80vh;
+    margin: 0 auto;
+}
+.carousel .slick-slide{
+    margin-right: 20px;
+}
+.carousel .slick-prev,
+.carousel .slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  font-size: 5px;
+  color: transparent;
+  background-color:transparent;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+.carousel .slick-prev::before,
+.carousel .slick-next::before {
+  content: '';
+  font-family: Arial, sans-serif; 
+  font-size: 40px; 
+  color: #eeeeee; 
+}
+.carousel .slick-prev::before {
+    content: '<';
+}
+  
+.carousel .slick-next::before {
+    content: '>';
+}
+.carousel .slick-prev {
+    left: 10px;
+}
+  
+.carousel .slick-next {
+    right: 10px;
+}
+.carousel .slick-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel .slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.carousel .slick-dots li button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.carousel .slick-dots li.slick-active button {
+    opacity: 1;
+}
+
+.slick-track {
+    width: auto !important;
+    display: flex !important;
+  }
