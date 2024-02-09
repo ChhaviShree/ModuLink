@@ -21,11 +21,10 @@
 .nav-menu {
     display: flex;
     align-items: center;
-    list-style: none;
+    color: black;
     gap: 80px;
-    color: rgba(89, 0, 0, 0.649);
     font-size: 20px;
-    font-weight: 540;
+    font-weight: 560;
     margin-right: 40px;
     font-family: 'Montserrat', sans-serif;
 }
@@ -41,7 +40,7 @@
 }
 
 .nav-menu li:hover {
-    color: #545454;
+    color: #eb9320;
     text-decoration: none;
 }
 
@@ -50,7 +49,7 @@
     width: 100%;
     height: 3px;
     border-radius: 10px;
-    background: rgb(239, 149, 66);
+    background: rgb(226, 120, 21);
 }
 
 .nav-login-cart {
@@ -253,26 +252,36 @@
     }
 }
 
-@media(max-width:800px) {
+@media (max-width: 800px) {
     .navbar {
-        padding: 8px 0px;
+      padding: 8px 0px;
+      flex-direction: column;
+      align-items: flex-start;
     }
-
-    .nav-dropdown {
-        display: block;
-        width: 30px;
-        transform: rotate(-90deg);
-        transition: 0.5s;
+  
+    .nav-logo p {
+      font-size: 20px;
     }
-
+  
     .nav-menu {
-        display: none;
-        height: 80px;
-        width: 100%;
-        position: absolute;
-        background-color: white;
-        justify-content: center;
-        top: 50px;
+      display: none;
+      height: auto;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+      background-color: #f0d9da;
+      margin-top: 10px;
+      padding: 16px;
+    }
+  
+    .nav-menu li {
+      gap: 3px;
+    }
+  
+    .nav-dropdown {
+      display: block;
+      transform: rotate(-90deg);
+      transition: 0.5s;
     }
 }
 @media(max-width: 500px) {
