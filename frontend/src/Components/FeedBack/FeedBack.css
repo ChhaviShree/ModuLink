@@ -1,0 +1,88 @@
+.feedback {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feedback-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  
+  }
+  
+  .feedback-box {
+    display: flex;
+    align-items: center;
+    height: 180px;
+    width: 440px;
+    background-color: #620303;
+    padding: 10px;
+    margin: 0 10px;
+  }
+  
+  .feedback-text {
+    color: white;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 5px;
+  }
+  
+  .feedback-author {
+    font-style: italic;
+    color: #ebe8e8;
+  }
+  
+  .feedback-form {
+    width: 500px;
+    height: 50px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  
+  .feedback-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    font-size: 20px;
+    font-style: bold;
+    width: 200px;
+    margin-left: 20px;
+    padding: 10px 20px;
+    background: transparent;
+    color: #000000;
+    border-color: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    color: white;
+    background-color: #3a668e; 
+  }
+  .delete-button {
+    display: block;
+    margin-top: auto;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #cc0000;
+  }
+  
