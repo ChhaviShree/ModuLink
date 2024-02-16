@@ -19,10 +19,11 @@
     display: flex;
     align-items: center;
     height: 180px;
-    width: 440px;
+    width: 438px;
     background-color: #620303;
     padding: 10px;
     margin: 0 10px;
+    border: 2px solid #fafafa
   }
   
   .feedback-text {
@@ -76,7 +77,7 @@
     margin-top: auto;
     margin-bottom: 10px;
     padding: 5px 10px;
-    background-color: #ff6666;
+    background-color: #d17206;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -85,4 +86,34 @@
   .delete-button:hover {
     background-color: #cc0000;
   }
-  
+  @media(max-width: 1280px) {
+    .feedback-box {
+        width: 400px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .feedback-box {
+        width: 350px;
+    }
+
+    .feedback-input {
+        width: 80%;
+    }
+
+    .submit-button {
+        width: 150px;
+    }
+}
+
+@media(max-width: 800px) {
+    .feedback-box {
+        width: 300px;
+    }
+}
+
+@media(max-width: 500px) {
+    .feedback-box {
+        width: 250px;
+    }
+}
