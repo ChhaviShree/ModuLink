@@ -21,12 +21,12 @@
     text-align: center;
     justify-content: center;
     text-decoration: none;
-    border: 2px solid #000;
+    border: 2px solid rgb(108, 167, 219);
     border-radius: 5px;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    color: rgb(6, 3, 3);
+    color: rgb(158, 205, 247);
 }
 .button-item a:hover {
     color: white;

@@ -19,7 +19,7 @@
     display: flex;
     list-style: none;
     gap: 50px;
-    color: black;
+    color: rgb(254, 247, 247);
     font-size: 20px;
 
 }
@@ -55,6 +55,17 @@
     border-radius: 10px;
     height: 3px;
     background: #c7c7c7;
+}
+.footer video {
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 20px;
+}
+.video-container {
+    width: 100%;
+    display: flex;
+    gap: 36px;
+    justify-content: center;
 }
 @media(max-width:800px){
     .footer{
