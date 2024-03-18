@@ -23,17 +23,17 @@ body::after {
 }
 
 body::before {
-  background-image: url('./Components/Assets/vendor_image5.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.5); 
+  background-image:url('./Components/Assets/vendor_image5.jpg');
+  background-size:cover;
+  background-position:center;
+  filter:brightness(0.5); 
 }
 
 body::after {
-  background-image: url('./Components/Assets/vendor_image4.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.3); 
+  background-image:url('./Components/Assets/vendor_image4.jpg');
+  background-size:cover;
+  background-position:center;
+  filter:brightness(0.3); 
 }
 
 /*@keyframes gradientAnimation{

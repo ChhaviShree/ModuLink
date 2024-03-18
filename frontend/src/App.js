@@ -2,6 +2,8 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Home from './Pages/Home'
+import About from './Pages/About';
+import Blogs from './Pages/Blogs';
 import Footer from './Components/Footer/Footer';
 import BuildYourHouse from './Pages/BuildYourHouse'
 import VendorRegistration from './Pages/VendorRegistration'
@@ -30,6 +32,8 @@ function App() {
       <Routes>
         <Route path="/build-your-house" Component={BuildYourHouse}/>
         <Route path="/vendor-registration" Component={VendorRegistration}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/' element={<Home/>}/>
       </Routes>
       <Footer/>

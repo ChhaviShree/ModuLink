@@ -9,7 +9,7 @@
     padding: 0px 140px;
     margin-top: 50px;
     margin-bottom: 80px;
-    background: linear-gradient(180deg, #ead7ec 0%, #e1ffea22 60%);
+    background: linear-gradient(180deg, #ead7ec 0%, #e1ffea22 70%);
 }
 
 .newsletter h1 {
@@ -20,8 +20,9 @@
 }
 
 .newsletter p {
-    color: #252424;
-    font-size: 20px;
+    color: #161515;
+    font-size: 30px;
+    font-weight: 200;
 }
 
 .newsletter div {
@@ -40,11 +41,10 @@
     margin-left: 30px;
     border: none;
     outline: none;
-    color: #616161;
+    color: #0c0c0c;
     font-family: Poppins;
     font-size: 16px;
 }
-
 .newsletter div button {
     width: 210px;
     height: 60px;
