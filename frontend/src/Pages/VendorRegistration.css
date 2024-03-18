@@ -1,0 +1,70 @@
+
+.container1 {
+    height: auto;
+    width: 800px;
+    margin: 10vh auto;
+    margin-bottom: 20vh;
+    padding: 20px;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h3{
+    
+    color:  rgb(242, 208, 161);
+  }
+  h2 {
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #f1cdcd;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="file"],
+  textarea{
+    background-color: transparent;
+    color: #e9e2e2 !important;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .form-group {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding-right: 10px;
+  }
+  .checkbox-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline; 
+  }
+  
