@@ -37,6 +37,7 @@ const VendorRegistration = () => {
     termsAndConditions: false,
     optInNewsletter: false,
   });
+  const [formErrors,setFormErrors]=useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,6 +66,59 @@ const VendorRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    setFormData({
+      companyName: '',
+      businessRegistrationNumber: '',
+      legalBusinessStructure: '',
+      yearOfEstablishment: '',
+      contactPersonName: '',
+      contactPersonTitle: '',
+      businessAddress: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      country: '',
+      phoneNumber: '',
+      emailAddress: '',
+      website: '',
+      linkedInProfile: '',
+      otherSocialMedia: '',
+      productServiceType: '',
+      briefDescription: '',
+      certifications: '',
+      yearsOfExperience: '',
+      previousProjects: '',
+      specializedExpertise: '',
+      references: '',
+      insuranceInfo: '',
+      compliance: '',
+      paymentTerms: '',
+      paymentMethods: '',
+      collaborationTypes: '',
+      geographicAreas: '',
+      projectScale: '',
+      attachments: [],
+      termsAndConditions: false,
+      optInNewsletter: false,
+    });
+  };
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.companyName.trim()) {
+      errors.companyName = 'Company Name is required';
+    }
+    if (!formData.emailAddress.trim()) {
+      errors.emailAddress = 'Email Address is required';
+    } else if (!isValidEmail(formData.emailAddress)) {
+      errors.emailAddress = 'Invalid email address';
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   return (
