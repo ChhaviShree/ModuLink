@@ -20,10 +20,11 @@
     align-items: center;
     height: 180px;
     width: 438px;
-    background-color: #2d0d0d;
+    background-color:  #290124;
     /*background-color: #570303;*/
+    margin-top: 60px;
     padding: 10px;
-    margin: 0 10px;
+    margin-right:10px;
     border: 2px solid #fafafa
   }
   

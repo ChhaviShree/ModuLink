@@ -7,7 +7,7 @@
     justify-content: center;
     margin: auto;
     padding: 0px 140px;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-bottom: 80px;
     background: linear-gradient(180deg, #ead7ec 0%, #e1ffea22 70%);
 }
@@ -48,7 +48,7 @@
     width: 210px;
     height: 60px;
     border-radius: 80px;
-    background: #2d0d0d;
+    background: #290124;
     color: white;
     font-size: 16px;
     cursor: pointer;
