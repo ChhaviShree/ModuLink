@@ -1,0 +1,143 @@
+.container-box{
+  margin-top: 50px;
+  height: 600px;
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  background-color: rgb(0, 0, 0);
+  color: rgb(242, 208, 161);
+  padding: 20px;
+  margin-bottom: 50px;
+  border: 5px solid #fafafa;
+}
+
+.description{
+  flex: 1;
+  text-align: justify;
+  margin-top: 110px;
+  margin-left: 80px;
+  margin-right: 280px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Single Day', cursive;
+}
+
+.cube-container{
+  flex: 1;
+  display: flex;
+}
+
+.models{
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container{
+  width: 364px;
+  height: 364px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.image-cube{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: rotateCube 10s infinite linear;
+}
+
+.front,
+.back,
+.right,
+.left,
+.top,
+.bottom{
+  width: 364px;
+  height: 364px;
+  position: absolute;
+}
+
+.front{
+  transform: translateZ(182px);
+}
+
+.back{
+  transform: translateZ(-182px) rotateY(180deg);
+}
+
+.right{
+  transform: rotateY(90deg) translateZ(182px);
+}
+
+.left{
+  transform: rotateY(-90deg) translateZ(182px);
+}
+
+.top{
+  transform: rotateX(-90deg) translateZ(182px);
+}
+
+.bottom{
+  transform: rotateX(90deg) translateZ(182px);
+}
+
+@keyframes rotateCube{
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@media (max-width:1280px){
+  .description{
+    font-size: 20px;
+  }
+}
+@media (max-width: 1024px){
+  .description{
+    margin-left: 50px;
+    margin-right: 150px;
+  }
+}
+@media (max-width: 800px){
+  .container-box{
+    padding-top: 60px;
+    height: 600px;
+    flex-direction: column;
+  }
+
+  .description{
+    order: 2;
+    margin-top: 80px;
+  }
+
+  .cube-container{
+    margin-left: 150px;
+    order: 1;
+    margin-top: 20px; 
+  }
+}
+
+@media (max-width: 600px){
+  .container-box {
+    height: 800px;
+    flex-direction: column;
+  }
+
+  .description{
+    order: 2;
+    margin-top: 50px; 
+  }
+
+  .cube-container{
+    margin-right: 100px;
+    order: 1; 
+    margin-top:20px; 
+  }
+}
