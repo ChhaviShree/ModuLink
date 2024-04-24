@@ -44,6 +44,10 @@ const addVendorRegistration = async (req, res) => {
       return res.status(400).send("Vendor already exists");
     }
     const hashedPassword = await bcrypt.hash(password, 10);
+    let formattedAttachments = [];
+    if (Array.isArray(attachments)) {
+      formattedAttachments = attachments.map((attachment) => String(attachment));
+    }
     const vendor = await Vendor.create({
       companyName,
       businessRegistrationNumber,
@@ -73,9 +77,10 @@ const addVendorRegistration = async (req, res) => {
       collaborationTypes,
       geographicAreas,
       projectScale,
-      attachments,
+      attachments: formattedAttachments,
       termsAndConditions,
     });
+
     res.status(201).json({ vendor });
   } catch (error) {
     console.error(error);

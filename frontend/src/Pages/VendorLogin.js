@@ -22,7 +22,7 @@ const VendorLogin = () => {
   const handleVendorLogin = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://modular-house.vercel.app/vendors/vendor-login", {
+      const response = await fetch("http://localhost:4000/vendors/vendor-login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const VendorLogin = () => {
       setTimeout(() => {
         setLoginSuccess(false);
         window.location.href = "/vendor-view";
-      }, 3000);
+      }, 4000);
     } catch (error) {
       setLoginError('Invalid email or password. Please try again.');
       setLoading(false);
@@ -63,7 +63,7 @@ const VendorLogin = () => {
             <div className="inputBx">
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Enter your email"
                 value={email}
                 onChange={handleEmailChange}
                 required

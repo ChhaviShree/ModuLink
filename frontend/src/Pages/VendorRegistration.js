@@ -84,7 +84,7 @@ const VendorRegistration = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('https://modular-house.vercel.app/vendors/vendor-register', {
+      const response = await fetch('http://localhost:4000/vendors/vendor-register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,27 +110,27 @@ const VendorRegistration = () => {
     <div className='vendor-signup'>
       <Navbar menu={"blogs"}/>
     <div className='container1'>
-     <h2>Vendor Registration</h2>
-     <div className='progress-bar'>
-       <div className={`step ${step === 1 ? 'active' : ''}`}>
-         <p>Company Information</p>
+     <h1>Vendor Registration</h1>
+     <br/>
+     <div className='tabs'>
+       <div className={`tab ${step === 1 ? 'active' : ''}`} onClick={() => setStep(1)}>
+         <p>Company Info</p>
        </div>
-       <div className={`step ${step === 2 ? 'active' : ''}`}>
-         <p>Contact Information</p>
+       <div className={`tab ${step === 2 ? 'active' : ''}`} onClick={() => setStep(1)}>
+         <p>Contact Info</p>
        </div>
-       <div className={`step ${step === 3 ? 'active' : ''}`}>
-         <p>Website and Social Media</p>
+       <div className={`tab ${step === 3 ? 'active' : ''}`} onClick={() => setStep(1)}>
+         <p>Social Media Info</p>
        </div>
-       <div className={`step ${step === 4 ? 'active' : ''}`}>
-         <p>Product/Service Details</p>
+       <div className={`tab ${step === 4 ? 'active' : ''}`} onClick={() => setStep(1)}>
+         <p>Product Details</p>
        </div>
-       <div className={`step ${step === 5 ? 'active' : ''}`}>
-         <p>Additional Informations</p>
+       <div className={`tab ${step === 5 ? 'active' : ''}`} onClick={() => setStep(1)}>
+         <p>Additional Info</p>
        </div>
      </div>
      <form onSubmit={handleSubmit}>
        <div className={`page ${step === 1 ? 'active' : ''}`}>
-         <h3>Company Information:</h3>
          <label>
            Company Name:
            <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} />
@@ -149,7 +149,6 @@ const VendorRegistration = () => {
          </label>
        </div>
        <div className={`page ${step === 2 ? 'active' : ''}`}>
-         <h3>Contact Information:</h3>
          <label>
            Contact Person's Name:
            <input type="text" name="contactPersonName" value={formData.contactPersonName} onChange={handleChange} />
