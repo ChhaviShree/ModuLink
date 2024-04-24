@@ -11,6 +11,7 @@ import CustomerSignup from "./Pages/CustomerRegistration";
 import Dashboard from "./Pages/Dashboard";
 import Privateroute from "./Components/Privateroute";
 import Profile from "./Pages/Profile";
+import VendorView from "./Pages/VendorView";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/vendor-view" element={<VendorView/>}/>
           <Route path="/customer-login" element={<CustomerLogin />} />
           <Route path="/vendor-register" element={<VendorRegistration/>}/>
           <Route path="/vendor-login" element={<VendorLogin />} />
