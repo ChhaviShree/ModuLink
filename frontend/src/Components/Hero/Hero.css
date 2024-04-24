@@ -1,0 +1,24 @@
+.hero {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    width: 100%;
+    max-width: 80vh;
+    margin: 0 auto;
+  }
+  /* disable slick button */
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
+  /* disable slick dots */
+  .slick-dots {
+    display: none !important;
+  }
+  .slick-track {
+    /* width: auto !important; */
+    display: flex !important;
+  }
+  

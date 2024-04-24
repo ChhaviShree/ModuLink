@@ -1,0 +1,132 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer video {
+    width: 100%;
+    max-width: 100%; /* Ensure video doesn't exceed container width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .video-container {
+    overflow-x: auto; /* Enable horizontal scroll if necessary */
+    display: flex;
+    gap: 36px;
+    justify-content: center;
+    max-width: 100%; /* Ensure container doesn't exceed viewport width */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .video-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+  }
+  
+  @media (max-width: 1200px) {
+    .video-container {
+      flex-wrap: wrap; /* Allow videos to wrap to next line */
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .footer video {
+      max-width: 100%; /* Ensure video doesn't exceed container width */
+      height: auto; /* Maintain aspect ratio */
+    }
+  }
+  
+  .footer-logo p {
+    color: rgb(255, 253, 253);
+    font-size: 44px;
+    font-weight: 400;
+    margin-bottom: 70px;
+  }
+  .footer-links {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    color: rgb(254, 247, 247);
+    font-size: 20px;
+  }
+  .footer-links li {
+    cursor: pointer;
+  }
+  
+  .footer-social-icon {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .footer-icons-container {
+    padding: 10px;
+    padding-bottom: 6px;
+    background: #fbfbfb;
+    border: 1px solid #fafafa;
+  }
+  .footer-copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+    font-size: 20px;
+  }
+  
+  .footer-copyright hr {
+    width: 80%;
+    border: none;
+    border-radius: 10px;
+    height: 3px;
+    background: #c7c7c7;
+  }
+  .footer video {
+    margin-top: 50px;
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 90px;
+  }
+  .video-container {
+    width: 100%;
+    display: flex;
+    gap: 36px;
+    justify-content: center;
+  }
+  @media (max-width: 800px) {
+    .footer {
+      gap: 20px;
+    }
+    .footer-logo {
+      gap: 10px;
+      align-items: end;
+    }
+    .footer-logo img {
+      width: 40px;
+    }
+    .footer-logo p {
+      font-size: 14px;
+    }
+    .footer-links {
+      font-size: 14px;
+      gap: 10px;
+    }
+    .footer-social-icon img {
+      width: 22px;
+    }
+    .footer-copyright {
+      font-size: 13px;
+    }
+  }
+  

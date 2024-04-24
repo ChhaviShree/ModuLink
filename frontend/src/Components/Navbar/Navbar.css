@@ -1,0 +1,82 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 0 1px 3px -2px black;
+}
+
+.nav-logo p {
+    font-size: 24px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+    color: rgba(75, 65, 65, 0.649);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nav-menu li {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-menu li:hover {
+    color: #545454;
+}
+
+.nav-login-cart {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+@media (max-width: 800px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-dropdown {
+        display: block;
+        transform: rotate(-90deg);
+        transition: transform 0.5s;
+    }
+
+    .nav-dropdown:hover + .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        gap: 10px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .nav-menu {
+        display: none !important;
+    }
+
+    .nav-dropdown {
+        display: block;
+        transform: none;
+        cursor: pointer;
+    }
+
+    .nav-dropdown:hover + .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: static;
+        background-color: white;
+        gap: 10px;
+        width: 100%;
+    }
+}
