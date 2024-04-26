@@ -5,7 +5,7 @@ const { db } = require("./db/db");
 const vendorViewRouter = require("./routes/vendorViewRoutes");
 const vendorRouter = require("./routes/vendorRoutes");
 const customerRouter = require("./routes/CustomerRoutes");
-// const blogRouter = require("./routes/blogRoutes");
+const blogRouter = require("./routes/BlogRoutes");
 
 const app = express();
 
@@ -23,6 +23,7 @@ app.use(cors());
 app.use("/vendors", vendorRouter);
 app.use("/customers", customerRouter);
 app.use("/vendor-details", vendorViewRouter);
+app.use("/blogs", blogRouter);
 
 // app.use("/blogs",blogRouter);
 

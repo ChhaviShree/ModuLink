@@ -6,6 +6,7 @@ const auth = (req, res, next) => {
       token = token.split(" ")[1];
       let user = jwt.verify(token, process.env.JWT_SECRET);
       req.userId = user.id;
+      console.log("jwt", user);
     } else {
       res.status(401).json({ message: "No token" });
     }

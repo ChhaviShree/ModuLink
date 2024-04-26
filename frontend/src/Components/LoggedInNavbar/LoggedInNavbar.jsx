@@ -43,7 +43,13 @@ const LoggedInNavbar = () => {
 
         {/* Menu Items */}
         <MenuList>
-          <MenuItem>Posts</MenuItem>
+          <MenuItem
+            onClick={() => {
+              window.location.href = "/user/blog";
+            }}
+          >
+            Posts
+          </MenuItem>
           <MenuItem>Requests</MenuItem>
           <MenuItem>Profile</MenuItem>
           <MenuItem>

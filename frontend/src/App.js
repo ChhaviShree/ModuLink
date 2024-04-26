@@ -12,6 +12,7 @@ import Dashboard from "./Pages/Dashboard";
 import Privateroute from "./Components/Privateroute";
 import Profile from "./Pages/Profile";
 import VendorView from "./Pages/VendorView";
+import Blog from "./Pages/Blog/Blog";
 
 function App() {
   return (
@@ -21,15 +22,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/vendor-view" element={<VendorView/>}/>
+          <Route path="/vendor-view" element={<VendorView />} />
           <Route path="/customer-login" element={<CustomerLogin />} />
-          <Route path="/vendor-register" element={<VendorRegistration/>}/>
+          <Route path="/vendor-register" element={<VendorRegistration />} />
           <Route path="/vendor-login" element={<VendorLogin />} />
           <Route path="/build-your-house" element={<BuildYourHouse />} />
           <Route path="/signup" element={<CustomerSignup />} />
           <Route path="/user" element={<Privateroute />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="blog" element={<Blog />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -8,7 +8,7 @@ import { Button } from "@chakra-ui/react";
 const CustomerLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -54,6 +54,7 @@ const CustomerLogin = () => {
       console.log("Email:", data.email);
       console.log("Token:", data.token);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("type", "User");
       setLoading(false);
       window.location.href = "/user/dashboard";
     } catch (error) {
