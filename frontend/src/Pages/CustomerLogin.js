@@ -32,14 +32,14 @@ const CustomerLogin = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "https://modular-house.vercel.app/customers/customer-login",
+        "http://localhost:4000/customers/customer-login",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            emailAddress: email,
+            email: email,
             password: password,
           }),
         }
@@ -51,12 +51,10 @@ const CustomerLogin = () => {
       }
 
       const data = await response.json();
-      console.log("Email:", data.email);
-      console.log("Token:", data.token);
       localStorage.setItem("token", data.token);
       localStorage.setItem("type", "User");
       setLoading(false);
-      window.location.href = "/user/dashboard";
+      window.location.href = "/user/blog";
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -75,7 +73,7 @@ const CustomerLogin = () => {
             <div className="inputBx">
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Email"
                 value={email}
                 onChange={handleEmailChange}
                 required

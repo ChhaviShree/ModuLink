@@ -5,6 +5,32 @@
   font-family: Arial, sans-serif;
   color: #fff;
 }
+.profile-photo-uploader {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.profile-photo span {
+  color: #666;
+}
+
+#photo-input {
+  display: none;
+}
 
 .signup-parent::before,
 .signup-parent::after {
@@ -86,7 +112,7 @@
     transform: rotate(0deg);
   }
 }
- 
+
 .signup {
   padding-top: 20px;
   padding-left: 40px;
@@ -150,12 +176,11 @@
 .signup .inputBx input[type="submit"]:hover {
   background-color: #0056b3;
 }
-.custregister{
+.custregister {
   display: flex;
   justify-content: center;
   margin: 30px auto;
 }
-
 
 @media only screen and (max-width: 1280px) {
   .signup {

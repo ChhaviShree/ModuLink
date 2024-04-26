@@ -27,9 +27,11 @@ const customerRegister = async (req, res) => {
 const customerLogin = async (req, res) => {
   const { email, password } = req.body;
   try {
+    console.log(email);
     const customer = await Customer.findOne({ email });
+    console.log(customer);
     if (!customer) {
-      return res.status(401).json({ message: "Invalid email or password" });
+      return res.status(401).json({ message: "Invalid Email" });
     }
     const isMatch = await bcrypt.compare(password, customer.password);
     if (!isMatch) {
