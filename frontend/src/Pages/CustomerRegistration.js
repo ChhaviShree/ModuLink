@@ -62,6 +62,7 @@ const CustomerRegistration = () => {
         },
         body: JSON.stringify({
           name: name,
+          photo: profilePhotos,
           email: email,
           password: password,
           phoneNumber: phoneNumber,
