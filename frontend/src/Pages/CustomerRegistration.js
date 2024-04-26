@@ -38,6 +38,7 @@ const CustomerRegistration = () => {
     const selectedPhoto = event.target.files[0];
     setPostProfilePhoto(selectedPhoto);
     setProfilePhoto(URL.createObjectURL(selectedPhoto));
+    // check
   };
   const apiKey = "4b10ae2f8c724e32c293659abe5af74b";
   const uploadUrl = "https://api.imgbb.com/1/upload";
