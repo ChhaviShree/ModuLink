@@ -1,82 +1,128 @@
 .vendor-info {
-    margin-bottom: 100px;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    position: relative;
-  }
+  margin-bottom: 100px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  position: relative;
+}
+
+.vendor-info::before,
+.vendor-info::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.vendor-info::before {
+  background-image: url("../Components/Assets/vendor_image.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.2);
+}
+
+.vendor-info::after {
+  background-image: url("../Components/Assets/vendor_image.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3);
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  max-width: 2200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: transparent !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(33.33% - 20px);
+  margin: 0 10px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  margin-bottom: 10px;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  margin-top: 10px;
+}
+
+.add-house-btn {
+  margin-top: 10px;
+}
+
+.add-image-btn {
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+.delete-location-btn {
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+.card-image {
+  width: calc(70% - 10px);
+  height: auto;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
-  .vendor-info::before,
-  .vendor-info::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+}
+.card-image {
+  width: calc(50% - 10px);
+  height: auto;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.image-container img {
+  width: calc(50% - 10px);
+  height: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.loc-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
   
-  .vendor-info::before {
-    background-image: url("../Components/Assets/vendor_image.jpg");
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.2);
-  }
-  
-  .vendor-info::after {
-    background-image: url("../Components/Assets/vendor_image.jpg");
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.3);
-  }
-  
-  .card-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 20px;
-    flex-wrap: wrap;
-    max-width: 2200px;
-    margin: 0 auto;
-  }
-  
-  .card {
-    background-color:transparent !important;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: calc(33.33% - 20px);
-    margin: 0 10px;
-    margin-bottom: 20px;
-  }
-  
-  .card-header {
-    margin-bottom: 10px;
-  }
-  
-  .card-body {
-    margin-bottom: 10px;
-  }
-  
-  .input-container {
-    margin-bottom: 10px;
-  }
-  
-  .delete-btn {
-    margin-top: 10px;
-  }
-  
-  .add-house-btn {
-    margin-top: 10px;
-    
-  }
-  .add-image-btn{
-    margin-top: 10px;
-    margin-right: 5px;
-  }
-  .delete-location-btn{
-    margin-top: 10px;
-    margin-right: 5px;
-  }
-  
+}
+
+.loc-button .btn-button {
+  max-width: 400px;
+}

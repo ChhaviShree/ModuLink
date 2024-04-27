@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import {
   SimpleGrid,
-  Heading,
   Text,
   Button,
   Input,
@@ -21,32 +20,43 @@ import Navbar from '../Components/Navbar/Navbar';
 import './VendorView.css';
 
 export default function VendorView() {
-  const [locations, setLocations] = useState([
-    {
-      id: 1,
-      name: 'Enter Location',
-      description: 'Description of My Location',
-      houses: [{ type: '', specs: '' }],
-      images: [],
-    },
-    {
-      id: 2,
-      name: 'Enter Location',
-      description: 'Description of Location 2',
-      houses: [{ type: '', specs: '' }],
-      images: [],
-    },
-  ]);
+  const [locations, setLocations] = useState(() => {
+    const savedLocations = localStorage.getItem('vendorLocations');
+    return savedLocations ? JSON.parse(savedLocations) : [
+      {
+        id: 1,
+        name: 'Enter Location',
+        description: 'Description of Location 1',
+        houses: [{ type: '', specs: '' }],
+        images: [],
+        selectedImages: [],
+      },
+      {
+        id: 2,
+        name: 'Enter Location',
+        description: 'Description of Location 2',
+        houses: [{ type: '', specs: '' }],
+        images: [],
+        selectedImages: [],
+      },
+    ];
+  });
 
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [addImageModal, setAddImageModal] = useState(false);
+  const [postProfilePhotos, setPostProfilePhotos] = useState([]);
+  const [profilePhotos, setProfilePhotos] = useState([]);
   const cancelRef = useRef();
+
+  useEffect(() => {
+    localStorage.setItem('vendorLocations', JSON.stringify(locations));
+  }, [locations]);
 
   const addVendorDetails = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/vendor-details/add-vendor-details');
-      setLocations(response.data);
+      const response = await axios.post('http://localhost:4000/vendor-details/add-vendor-details', locations);
+      console.log('Response from backend:', response.data);
     } catch (error) {
       console.error('Error fetching vendor details:', error);
     }
@@ -59,6 +69,7 @@ export default function VendorView() {
       description: 'Description of New Location',
       houses: [{ type: '', specs: '' }],
       images: [],
+      selectedImages: [],
     };
     setLocations([...locations, newLocation]);
   };
@@ -90,10 +101,35 @@ export default function VendorView() {
   };
 
   const handleAddImage = (locIndex) => {
-    console.log('Add Image Clicked for location:', locations[locIndex].name);
+    setSelectedLocation(locations[locIndex]);
     setAddImageModal(true);
   };
 
+  const handlePhotoChange = (event) => {
+    const selectedPhotos = Array.from(event.target.files);
+    setPostProfilePhotos(selectedPhotos);
+    const previewUrls = selectedPhotos.map((photo) => URL.createObjectURL(photo));
+    setProfilePhotos(previewUrls);
+  };
+
+  const apiKey = "4b10ae2f8c724e32c293659abe5af74b";
+  const uploadUrl = "https://api.imgbb.com/1/upload";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const specs = selectedLocation.houses.map((house) => house.specs).join(', ');
+      const response = await axios.post('http://localhost:4000/vendor-details/add-vendor-details', {
+        name: selectedLocation.name,
+        location: selectedLocation.description,
+        specifications: specs,
+        images: selectedLocation.images,
+      });
+      console.log('Response from backend:', response.data);
+    } catch (error) {
+      console.error('Error fetching vendor details:', error);
+    }
+  };
   return (
     <div className='vendor-info'>
       <Navbar menu={'vendor'} />
@@ -161,9 +197,16 @@ export default function VendorView() {
                   setDeleteConfirm(true);
                 }}
                 m={2}
-                >
+              >
                 Delete Location
-                </IconButton>
+              </IconButton>
+              {location.selectedImages.length > 0 && (
+                <div className="image-container">
+                  {location.selectedImages.map((imageUrl, index) => (
+                    <img key={index} src={imageUrl} alt={`Image ${index}`} className="card-image" />
+                  ))}
+                </div>
+              )}
             </Card>
           ))}
           </SimpleGrid>
@@ -203,7 +246,6 @@ export default function VendorView() {
         </AlertDialogOverlay>
       </AlertDialog>
 
-     
       {addImageModal && (
         <AlertDialog isOpen={addImageModal} leastDestructiveRef={cancelRef} onClose={() => setAddImageModal(false)}>
           <AlertDialogOverlay>
@@ -212,23 +254,43 @@ export default function VendorView() {
                 Add Image
               </AlertDialogHeader>
               <AlertDialogBody>
-                <Input type='file' placeholder='Add Image' onChange={(e) => console.log(e.target.files[0])} />
+                <Input type='file' multiple placeholder='Add Image' onChange={handlePhotoChange} />
                 <Text fontSize='sm' mt={2}>
-                  Please upload an image for this location.
+                  Please upload images for this location.
                 </Text>
               </AlertDialogBody>
               <AlertDialogFooter>
                 <Button ref={cancelRef} onClick={() => setAddImageModal(false)}>
                   Cancel
                 </Button>
-                <Button colorScheme='blue' ml={3}>
-                  Add Image
+                <Button colorScheme='blue' ml={3} onClick={handleSubmit}>
+                  Add Images
                 </Button>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialogOverlay>
         </AlertDialog>
       )}
+
+      {/* Display the selected profile photo */}
+      {profilePhotos && profilePhotos.length > 0 && (
+        <Box mt={4} mx='auto' textAlign='center'>
+          {profilePhotos.map((photo, index) => (
+            <img
+              key={index}
+              src={photo}
+              alt={`Photo ${index}`}
+              style={{ width: '200px', height: '200px', objectFit: 'cover', marginRight: '10px' }}
+            />
+          ))}
+        </Box>
+      )}
+      
+      <div className='loc-button'>
+        <Button colorScheme='green' onClick={addVendorDetails}>
+          Submit All Data
+        </Button>
+      </div>
     </div>
   );
 }
