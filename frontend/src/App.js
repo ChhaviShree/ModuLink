@@ -11,7 +11,7 @@ import CustomerSignup from "./Pages/CustomerRegistration";
 import Dashboard from "./Pages/Dashboard";
 import Privateroute from "./Components/Privateroute";
 import Profile from "./Pages/Profile";
-import VendorView from "./Pages/VendorView";
+import VendorView from "./Pages/Vendor-view/VendorView";
 import Blog from "./Pages/Blog/Blog";
 
 function App() {

@@ -105,7 +105,7 @@ const login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    res.status(200).json({ email: vendor.emailAddress, token });
+    res.status(200).json({ email: vendor.emailAddress, token,id:vendor.id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
