@@ -36,6 +36,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something broke!!");
 });
 
+
 const server = () => {
   db();
   app.listen(PORT, () => {
