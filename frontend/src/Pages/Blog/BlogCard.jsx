@@ -56,7 +56,6 @@ const BlogCard = () => {
       console.log(error);
     }
   };
-  console.log(blogs);
 
   const handleLikeUnlike = async (id) => {
     try {
@@ -69,7 +68,6 @@ const BlogCard = () => {
       });
       const data = await response.json();
       fetchAllBlogs();
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -105,7 +103,6 @@ const BlogCard = () => {
       console.log(error);
     }
   };
-  console.log(gotComment);
   const postComment = async (id) => {
     try {
       const response = await fetch(
@@ -123,7 +120,6 @@ const BlogCard = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
       setWriteComment("");
       getComment(id);
     } catch (error) {
@@ -140,7 +136,6 @@ const BlogCard = () => {
         },
       });
       const data = await response.json();
-      console.log(data);
       fetchAllBlogs();
     } catch (error) {
       console.log(error);
