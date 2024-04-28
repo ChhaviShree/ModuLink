@@ -19,10 +19,12 @@ import {
   ModalBody,
   ModalFooter,
   Input,
+  IconButton,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { BiChat, BiLike, BiShare } from "react-icons/bi";
 import { AiFillLike } from "react-icons/ai";
+import { DeleteIcon } from "@chakra-ui/icons";
 import Loader from "../../Components/Loaders/Loader";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
@@ -128,6 +130,22 @@ const BlogCard = () => {
       console.log(error);
     }
   };
+  const deleteBlog = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:4000/blogs/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      fetchAllBlogs();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div
@@ -172,6 +190,17 @@ const BlogCard = () => {
                             <Text>ModuLink User</Text>
                           </Box>
                         </Flex>
+                        {blog?.posted === true && (
+                          <IconButton
+                            aria-label="Delete"
+                            icon={<DeleteIcon />}
+                            colorScheme="red"
+                            mt={2}
+                            onClick={() => {
+                              deleteBlog(blog?.blog?._id);
+                            }}
+                          />
+                        )}
                       </Flex>
                     </CardHeader>
                     <CardBody>

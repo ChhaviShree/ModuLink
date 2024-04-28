@@ -29,6 +29,11 @@ const getBlogs = async (req, res) => {
     let blogsWithDetails = [];
     for (let i = 0; i < blogs.length; i++) {
       const authorType = blogs[i].author.type;
+      // this logged in user has posted this blog
+      let posted = false;
+      if (blogs[i].author.id.toString() === userId) {
+        posted = true;
+      }
       let userDetails;
       if (authorType === "Vendor") {
         userDetails = await VendorModel.findById(blogs[i].author.id._id);
@@ -47,6 +52,7 @@ const getBlogs = async (req, res) => {
         blog: blogs[i],
         details: userDetails,
         likedByUser: isLikedByUser,
+        posted: posted,
       };
 
       blogsWithDetails.push(blogWithDetails);
@@ -132,4 +138,27 @@ const getComments = async (req, res) => {
   }
 };
 
-module.exports = { createBlog, likeBlog, getBlogs, addComment, getComments };
+// delete the blog
+const deleteBlog = async (req, res) => {
+  try {
+    const { blogId } = req.params;
+    const userId = req.userId;
+    const blog = await BlogModel.findById(blogId);
+    if (blog.author.id.toString() !== userId) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    await BlogModel.findByIdAndDelete(blogId);
+    res.status(200).json({ message: "Blog deleted" });
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+};
+
+module.exports = {
+  createBlog,
+  likeBlog,
+  getBlogs,
+  addComment,
+  getComments,
+  deleteBlog,
+};
