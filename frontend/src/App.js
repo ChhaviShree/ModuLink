@@ -25,6 +25,7 @@ function App() {
           <Route path="/vendor-view" element={<VendorView />} />
           <Route path="/customer-login" element={<CustomerLogin />} />
           <Route path="/vendor-register" element={<VendorRegistration />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/vendor-login" element={<VendorLogin />} />
           <Route path="/build-your-house" element={<BuildYourHouse />} />
           <Route path="/signup" element={<CustomerSignup />} />
