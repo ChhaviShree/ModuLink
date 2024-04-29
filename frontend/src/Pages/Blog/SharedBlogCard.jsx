@@ -47,7 +47,6 @@ const SharedBlogCard = () => {
 
   const fetchAllBlogs = async () => {
     let paramsId = window.location.pathname.split("/")[3];
-    console.log("Params id", paramsId);
     try {
       const response = await fetch(
         `http://localhost:4000/blogs/getblog/${paramsId}`,
@@ -66,7 +65,6 @@ const SharedBlogCard = () => {
       console.log(error);
     }
   };
-  console.log(blogs);
   const handleLikeUnlike = async (id) => {
     try {
       const response = await fetch(`http://localhost:4000/blogs/like/${id}`, {
