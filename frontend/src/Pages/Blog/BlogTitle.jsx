@@ -68,7 +68,7 @@ const BlogTitle = () => {
       body: JSON.stringify(data),
     });
     const result1 = await response1.json();
-    console.log(result1);
+    window.location.reload();
     onClose();
   };
   return (

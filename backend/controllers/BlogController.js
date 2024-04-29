@@ -29,7 +29,6 @@ const getBlogs = async (req, res) => {
     let blogsWithDetails = [];
     for (let i = 0; i < blogs.length; i++) {
       const authorType = blogs[i].author.type;
-      // this logged in user has posted this blog
       let posted = false;
       if (blogs[i].author.id.toString() === userId) {
         posted = true;
@@ -39,7 +38,6 @@ const getBlogs = async (req, res) => {
         userDetails = await VendorModel.findById(blogs[i].author.id._id);
       } else if (authorType === "User") {
         const temp = await CustomerModel.findById(blogs[i].author.id._id);
-        console.log(temp);
         userDetails = {
           name: temp.name,
           photo: temp.photo,
@@ -59,6 +57,38 @@ const getBlogs = async (req, res) => {
     }
 
     res.status(200).json({ blogsWithDetails });
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+};
+
+const getParticularBlog = async (req, res) => {
+  try {
+    const { blogId } = req.params;
+    const blog = await BlogModel.findById(blogId).populate({
+      path: "author.id",
+    });
+    let posted = false;
+    if (blog.author.id.toString() === req.userId) {
+      posted = true;
+    }
+    const isLikedByUser = blog.liked_by.some(
+      (likedBy) => likedBy.user_id.toString() === req.userId
+    );
+    const authorType = blog.author.type;
+    let userDetails;
+    if (authorType === "Vendor") {
+      userDetails = await VendorModel.findById(blog.author.id._id);
+    } else if (authorType === "User") {
+      const temp = await CustomerModel.findById(blog.author.id._id);
+      userDetails = {
+        name: temp.name,
+        photo: temp.photo,
+      };
+    }
+    res
+      .status(200)
+      .json({ blog, details: userDetails, posted, likedByUser: isLikedByUser });
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
   }
@@ -161,4 +191,5 @@ module.exports = {
   addComment,
   getComments,
   deleteBlog,
+  getParticularBlog,
 };

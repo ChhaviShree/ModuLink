@@ -13,6 +13,7 @@ import Privateroute from "./Components/Privateroute";
 import Profile from "./Pages/Profile";
 import VendorView from "./Pages/Vendor-view/VendorView";
 import Blog from "./Pages/Blog/Blog";
+import SharedBlog from "./Pages/Blog/SharedBlog";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="blog/:id" element={<SharedBlog />} />
           </Route>
         </Routes>
       </BrowserRouter>
