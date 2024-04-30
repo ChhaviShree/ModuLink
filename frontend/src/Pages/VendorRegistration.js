@@ -105,7 +105,7 @@ const VendorRegistration = () => {
     console.log("Profile Photo:", profilePhotos);
     try {
       const response = await fetch(
-        "http://localhost:4000/vendors/vendor-register",
+        "https://modu-link.vercel.app/vendors/vendor-register",
         {
           method: "POST",
           headers: {
