@@ -36,6 +36,7 @@ const addVendorRegistration = async (req, res) => {
       projectScale,
       attachments,
       termsAndConditions,
+      profilePhotos,
     } = req.body;
     const existingVendor = await Vendor.findOne({
       emailAddress: emailAddress,
@@ -46,7 +47,9 @@ const addVendorRegistration = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     let formattedAttachments = [];
     if (Array.isArray(attachments)) {
-      formattedAttachments = attachments.map((attachment) => String(attachment));
+      formattedAttachments = attachments.map((attachment) =>
+        String(attachment)
+      );
     }
     const vendor = await Vendor.create({
       companyName,
@@ -79,12 +82,13 @@ const addVendorRegistration = async (req, res) => {
       projectScale,
       attachments: formattedAttachments,
       termsAndConditions,
+      profilePhotos,
     });
 
     res.status(201).json({ vendor });
   } catch (error) {
     console.error(error);
-    res.status(400).json({error:error.message});
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -105,7 +109,7 @@ const login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    res.status(200).json({ email: vendor.emailAddress, token,id:vendor.id });
+    res.status(200).json({ email: vendor.emailAddress, token, id: vendor.id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });

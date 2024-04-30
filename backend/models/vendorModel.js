@@ -31,6 +31,7 @@ const vendorSchema = new mongoose.Schema({
   projectScale: String,
   attachments: [String],
   termsAndConditions: Boolean,
+  profilePhotos: String,
 });
 
 const Vendor = mongoose.model("Vendor", vendorSchema);

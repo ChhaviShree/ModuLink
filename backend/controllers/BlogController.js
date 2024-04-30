@@ -78,7 +78,11 @@ const getParticularBlog = async (req, res) => {
     const authorType = blog.author.type;
     let userDetails;
     if (authorType === "Vendor") {
-      userDetails = await VendorModel.findById(blog.author.id._id);
+      const check = await VendorModel.findById(blog.author.id._id);
+      userDetails = {
+        name: check.companyName,
+        photo: check.profilePhotos,
+      };
     } else if (authorType === "User") {
       const temp = await CustomerModel.findById(blog.author.id._id);
       userDetails = {

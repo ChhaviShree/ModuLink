@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
-import './VendorLogin.css';
-import Navbar from '../Components/Navbar/Navbar';
+import React, { useState } from "react";
+import "./VendorLogin.css";
+import Navbar from "../Components/Navbar/Navbar";
 import { Link } from "react-router-dom";
-import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody } from "@chakra-ui/react";
+import {
+  Button,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+} from "@chakra-ui/react";
 
 const VendorLogin = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
 
   const handleEmailChange = (e) => {
@@ -22,22 +29,26 @@ const VendorLogin = () => {
   const handleVendorLogin = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:4000/vendors/vendor-login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          emailAddress: email,
-          password: password,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:4000/vendors/vendor-login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            emailAddress: email,
+            password: password,
+          }),
+        }
+      );
       if (!response.ok) {
         setLoading(false);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
       localStorage.setItem("token", data.token);
+      localStorage.setItem("type", "Vendor");
       setLoading(false);
       setLoginSuccess(true);
       setTimeout(() => {
@@ -45,21 +56,26 @@ const VendorLogin = () => {
         window.location.href = "/vendor-view";
       }, 4000);
     } catch (error) {
-      setLoginError('Invalid email or password. Please try again.');
+      setLoginError("Invalid email or password. Please try again.");
       setLoading(false);
     }
   };
 
   return (
-    <div className='vlogin-parent'>
+    <div className="vlogin-parent">
       <Navbar menu={"blogs"} />
       <div className="ring">
-        <i style={{ '--clr': '#00ff0a' }}></i>
-        <i style={{ '--clr': '#ff0057' }}></i>
-        <i style={{ '--clr': '#fffd44' }}></i>
+        <i style={{ "--clr": "#00ff0a" }}></i>
+        <i style={{ "--clr": "#ff0057" }}></i>
+        <i style={{ "--clr": "#fffd44" }}></i>
         <div className="vendor-login">
           <h2>Vendor Login</h2>
-          <form onSubmit={(e) => { e.preventDefault(); handleVendorLogin(); }}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleVendorLogin();
+            }}
+          >
             <div className="inputBx">
               <input
                 type="text"
@@ -98,9 +114,7 @@ const VendorLogin = () => {
               {loginError && <p>{loginError}</p>}
             </div>
             <div className="links-vendor-signup">
-              <Link to="/vendor-register">
-                Sign Up
-              </Link>
+              <Link to="/vendor-register">Sign Up</Link>
             </div>
           </form>
         </div>
@@ -112,7 +126,7 @@ const VendorLogin = () => {
       >
         <AlertDialogOverlay>
           <AlertDialogContent>
-            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
               Login Successful
             </AlertDialogHeader>
             <AlertDialogBody>
