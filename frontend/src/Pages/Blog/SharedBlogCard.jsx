@@ -49,7 +49,7 @@ const SharedBlogCard = () => {
     let paramsId = window.location.pathname.split("/")[3];
     try {
       const response = await fetch(
-        `http://localhost:4000/blogs/getblog/${paramsId}`,
+        `https://modu-link.vercel.app/blogs/getblog/${paramsId}`,
         {
           method: "GET",
           headers: {
@@ -67,7 +67,7 @@ const SharedBlogCard = () => {
   };
   const handleLikeUnlike = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/blogs/like/${id}`, {
+      const response = await fetch(`https://modu-link.vercel.app/blogs/like/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const SharedBlogCard = () => {
   const getComment = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/blogs/getcomments/${id}`,
+        `https://modu-link.vercel.app/blogs/getcomments/${id}`,
         {
           method: "GET",
           headers: {
@@ -114,7 +114,7 @@ const SharedBlogCard = () => {
   const postComment = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/blogs/comment/${id}`,
+        `https://modu-link.vercel.app/blogs/comment/${id}`,
         {
           method: "PUT",
           headers: {
@@ -136,7 +136,7 @@ const SharedBlogCard = () => {
   };
   const deleteBlog = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/blogs/delete/${id}`, {
+      const response = await fetch(`https://modu-link.vercel.app/blogs/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
