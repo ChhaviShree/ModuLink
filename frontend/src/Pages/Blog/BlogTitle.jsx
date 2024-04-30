@@ -59,7 +59,7 @@ const BlogTitle = () => {
       posters: bannerUrls,
       authorType: "User",
     };
-    const response1 = await fetch("http://localhost:4000/blogs/create", {
+    const response1 = await fetch("https://modu-link.vercel.app/blogs/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

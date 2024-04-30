@@ -85,7 +85,7 @@ export default function VendorView() {
     e.preventDefault();
     try {
       const specs = selectedLocation.houses.map((house) => house.specs).join(', ');
-      const response = await axios.post('http://localhost:4000/vendor-details/add-vendor-details', {
+      const response = await axios.post('https://modu-link.vercel.app/vendor-details/add-vendor-details', {
         id: locations.length + 1,
         name: selectedLocation.name,
         location: selectedLocation.description,
@@ -263,7 +263,6 @@ export default function VendorView() {
         </AlertDialog>
       )}
 
-      {/* Display the selected profile photo */}
       {profilePhotos && profilePhotos.length > 0 && (
         <Box mt={4} mx='auto' textAlign='center'>
           {profilePhotos.map((photo, index) => (

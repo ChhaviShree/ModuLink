@@ -32,7 +32,7 @@ const CustomerLogin = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:4000/customers/customer-login",
+        "https://modu-link.vercel.app/customers/customer-login",
         {
           method: "POST",
           headers: {

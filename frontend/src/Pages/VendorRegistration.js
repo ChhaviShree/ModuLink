@@ -84,7 +84,7 @@ const VendorRegistration = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:4000/vendors/vendor-register', {
+      const response = await fetch('https://modu-link.vercel.app/vendors/vendor-register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

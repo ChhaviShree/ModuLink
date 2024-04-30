@@ -22,7 +22,7 @@ const VendorLogin = () => {
   const handleVendorLogin = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:4000/vendors/vendor-login", {
+      const response = await fetch("https://modu-link.vercel.app/vendors/vendor-login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -56,7 +56,7 @@ const CustomerRegistration = () => {
     const profilePhotos = result.data.url;
     console.log("Profile Photo:", profilePhotos);
     try {
-      const response = await fetch("http://localhost:4000/customers/signup", {
+      const response = await fetch("https://modu-link.vercel.app/customers/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
