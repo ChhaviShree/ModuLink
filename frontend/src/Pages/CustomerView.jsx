@@ -9,7 +9,7 @@ const Customerview = () => {
   useEffect(() => {
     const fetchAllVendors = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/vendors/all-vendor-details');
+        const response = await axios.get('https://modu-link.vercel.appvendors/all-vendor-details');
         setVendors(response.data);
         setLoading(false);
       } catch (error) {
