@@ -31,7 +31,7 @@ import "react-quill/dist/quill.bubble.css";
 import Whatsapp from "./Whatsapp.svg";
 import Facebook from "./Facebook.svg";
 import Twitter from "./Twitter.svg";
-const BlogCard = () => {
+const SharedBlogCard = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalBody, setModalBody] = useState({});
@@ -46,14 +46,18 @@ const BlogCard = () => {
   }, []);
 
   const fetchAllBlogs = async () => {
+    let paramsId = window.location.pathname.split("/")[3];
     try {
-      const response = await fetch("https://modu-link.vercel.app/blogs/allblogs", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `http://localhost:4000/blogs/getblog/${paramsId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = await response.json();
       setBlogs(data);
       setLoading(false);
@@ -61,10 +65,9 @@ const BlogCard = () => {
       console.log(error);
     }
   };
-
   const handleLikeUnlike = async (id) => {
     try {
-      const response = await fetch(`https://modu-link.vercel.app/blogs/like/${id}`, {
+      const response = await fetch(`http://localhost:4000/blogs/like/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +95,7 @@ const BlogCard = () => {
   const getComment = async (id) => {
     try {
       const response = await fetch(
-        `https://modu-link.vercel.app/blogs/getcomments/${id}`,
+        `http://localhost:4000/blogs/getcomments/${id}`,
         {
           method: "GET",
           headers: {
@@ -111,7 +114,7 @@ const BlogCard = () => {
   const postComment = async (id) => {
     try {
       const response = await fetch(
-        `https://modu-link.vercel.app/blogs/comment/${id}`,
+        `http://localhost:4000/blogs/comment/${id}`,
         {
           method: "PUT",
           headers: {
@@ -133,7 +136,7 @@ const BlogCard = () => {
   };
   const deleteBlog = async (id) => {
     try {
-      const response = await fetch(`https://modu-link.vercel.app/blogs/delete/${id}`, {
+      const response = await fetch(`http://localhost:4000/blogs/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +189,6 @@ const BlogCard = () => {
       "_blank"
     );
   };
-  console.log("Share id", shareBody);
   return (
     <div
       style={{
@@ -210,122 +212,113 @@ const BlogCard = () => {
               gap: "1rem",
             }}
           >
-            {blogs &&
-              blogs?.blogsWithDetails?.map((blog) => (
-                <div key={blog._id}>
-                  <Card maxW="lg">
-                    <CardHeader>
-                      <Flex spacing="4">
-                        <Flex
-                          flex="1"
-                          gap="4"
-                          alignItems="center"
-                          flexWrap="wrap"
-                        >
-                          <Avatar src={blog?.details?.photo} />
-
-                          <Box>
-                            <Heading size="sm">{blog?.details?.name}</Heading>
-                            <Text>ModuLink User</Text>
-                          </Box>
-                        </Flex>
-                        {blog?.posted === true && (
-                          <IconButton
-                            aria-label="Delete"
-                            icon={<DeleteIcon />}
-                            colorScheme="red"
-                            mt={2}
-                            onClick={() => {
-                              deleteBlog(blog?.blog?._id);
-                            }}
-                          />
-                        )}
-                      </Flex>
-                    </CardHeader>
-                    <CardBody>
-                      <Text
-                        style={{
-                          fontSize: "1.5rem",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {blog?.blog?.blog_title}
-                      </Text>
-                      <Text>
-                        <div style={{ maxHeight: "300px", overflowY: "auto" }}>
-                          <ReactQuill
-                            theme={"bubble"}
-                            readOnly={true}
-                            modules={{
-                              toolbar: false,
-                            }}
-                            value={blog?.blog?.blog_description}
-                          />
-                        </div>
-                      </Text>
-                    </CardBody>
-                    <Image
-                      objectFit="cover"
-                      src={blog?.blog?.cover_image}
-                      alt="Cover Photo"
+            <Card maxW="md">
+              <CardHeader>
+                <Flex spacing="4">
+                  <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                    <Avatar
+                      name={blogs?.details?.name}
+                      src={blogs?.details?.photo}
                     />
 
-                    <CardFooter
-                      justify="space-between"
-                      flexWrap="wrap"
-                      sx={{
-                        "& > button": {
-                          minW: "136px",
-                        },
+                    <Box>
+                      <Heading size="sm">{blogs?.details?.name}</Heading>
+                      <Text>ModuLink User</Text>
+                    </Box>
+                  </Flex>
+                  {blogs?.posted === true && (
+                    <IconButton
+                      aria-label="Delete"
+                      icon={<DeleteIcon />}
+                      colorScheme="red"
+                      mt={2}
+                      onClick={() => {
+                        deleteBlog(blogs?.blog?._id);
                       }}
-                    >
-                      <Button
-                        flex="1"
-                        variant="ghost"
-                        leftIcon={
-                          blog?.likedByUser ? <AiFillLike /> : <BiLike />
-                        }
-                        onClick={() => {
-                          handleLikeUnlike(blog?.blog?._id);
-                        }}
-                      >
-                        {blog?.likedByUser ? "Liked" : "Like"}
-                      </Button>
-                      <Button
-                        flex="1"
-                        variant="ghost"
-                        leftIcon={<BiChat />}
-                        onClick={() => {
-                          handleComment(
-                            blog?.blog?._id,
-                            blog?.blog?.comments,
-                            blog?.details?.name,
-                            blog?.details?.photo,
-                            blog?.blog?.blog_title
-                          );
-                        }}
-                      >
-                        Comment
-                      </Button>
-                      <Button
-                        flex="1"
-                        variant="ghost"
-                        leftIcon={<BiShare />}
-                        onClick={() => {
-                          handleShare(
-                            blog?.blog?._id,
-                            blog?.details?.name,
-                            blog?.details?.photo,
-                            blog?.blog?.blog_title
-                          );
-                        }}
-                      >
-                        Share
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </div>
-              ))}
+                    />
+                  )}
+                </Flex>
+              </CardHeader>
+              <CardBody>
+                <Text
+                  style={{
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {blogs?.blog?.blog_title}
+                </Text>
+                <Text>
+                  <div style={{ maxHeight: "300px", overflowY: "auto" }}>
+                    <ReactQuill
+                      theme={"bubble"}
+                      readOnly={true}
+                      modules={{
+                        toolbar: false,
+                      }}
+                      value={blogs?.blog?.blog_description}
+                    />
+                  </div>
+                </Text>
+              </CardBody>
+              <Image
+                objectFit="cover"
+                src={blogs?.blog?.cover_image}
+                alt="Cover Image"
+              />
+
+              <CardFooter
+                justify="space-between"
+                flexWrap="wrap"
+                sx={{
+                  "& > button": {
+                    minW: "136px",
+                  },
+                }}
+              >
+                <Button
+                  flex="1"
+                  variant="ghost"
+                  leftIcon={blogs?.likedByUser ? <AiFillLike /> : <BiLike />}
+                  onClick={() => {
+                    handleLikeUnlike(blogs?.blog?._id);
+                  }}
+                >
+                  {blogs?.likedByUser ? "Liked" : "Like"}
+                </Button>
+                <Button
+                  flex="1"
+                  variant="ghost"
+                  leftIcon={<BiChat />}
+                  onClick={() => {
+                    handleComment(
+                      blogs?.blog?._id,
+                      blogs?.blog?.comments,
+                      blogs?.details?.name,
+                      blogs?.details?.photo,
+                      blogs?.blog?.blog_title
+                    );
+                  }}
+                >
+                  Comment
+                </Button>
+                <Button
+                  flex="1"
+                  variant="ghost"
+                  leftIcon={<BiShare />}
+                  onClick={() => {
+                    handleShare(
+                      blogs?.blog?._id,
+                      blogs?.details?.name,
+                      blogs?.details?.photo,
+                      blogs?.blog?.blog_title
+                    );
+                  }}
+                >
+                  Share
+                </Button>
+              </CardFooter>
+            </Card>
           </div>
         )}
       </div>
@@ -465,4 +458,4 @@ const BlogCard = () => {
   );
 };
 
-export default BlogCard;
+export default SharedBlogCard;
