@@ -2,18 +2,19 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Blogs from "./Pages/Blogs";
 import BuildYourHouse from "./Pages/BuildYourHouse";
-import VendorRegistration from "./Pages/VendorRegistration";
-import VendorLogin from "./Pages/VendorLogin";
-import CustomerLogin from "./Pages/CustomerLogin";
-import CustomerSignup from "./Pages/CustomerRegistration";
+import VendorRegistration from "./Pages/Registration/VendorRegistration";
+import VendorLogin from "./Pages/Login/VendorLogin";
+import CustomerLogin from "./Pages/Login/CustomerLogin";
+import CustomerSignup from "./Pages/Registration/CustomerRegistration";
 import Dashboard from "./Pages/Dashboard";
 import Privateroute from "./Components/Privateroute";
 import Profile from "./Pages/Profile";
 import VendorView from "./Pages/Vendor-view/VendorView";
 import Blog from "./Pages/Blog/Blog";
 import SharedBlog from "./Pages/Blog/SharedBlog";
+import ThreeDModels from "./Pages/Landing/ThreeDModels";
+import ModelView from "./Pages/Landing/ModelView";
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/blogs" element={<Blogs />} />
           <Route path="/vendor-view" element={<VendorView />} />
+          <Route path="/models" element={<ThreeDModels />} />
+          <Route path="/model-view" element={<ModelView />} />
           <Route path="/customer-login" element={<CustomerLogin />} />
           <Route path="/vendor-register" element={<VendorRegistration />} />
           <Route path="/vendor-login" element={<VendorLogin />} />

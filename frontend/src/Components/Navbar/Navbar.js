@@ -40,10 +40,10 @@ const Navbar = ({ menu }) => {
           {menu === "about" ? <hr /> : <></>}
         </li>
         <li>
-          <Link style={{ textDecoration: "none", color: "white" }} to="/Blogs">
-            Blogs
+          <Link style={{ textDecoration: "none", color: "white" }} to="/models">
+            3D Models
           </Link>
-          {menu === "blogs" ? <hr /> : <></>}
+          {menu === "models" ? <hr /> : <></>}
         </li>
         <li>
           <Menu>
@@ -52,7 +52,6 @@ const Navbar = ({ menu }) => {
               <MenuItem
                 onClick={() => (window.location.href = "/customer-login")}
               >
-                
                 <Box color="black">Customer Login</Box>
               </MenuItem>
               <MenuItem

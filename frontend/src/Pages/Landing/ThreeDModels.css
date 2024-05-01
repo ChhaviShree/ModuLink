@@ -1,0 +1,83 @@
+.model-parent {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.model-parent::before,
+.model-parent::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.model-parent::before {
+  background-image: url("../../Components/Assets/vendor_image5.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+}
+.model-parent::after {
+  background-image: url("../../Components/Assets/vendor_image4.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3);
+}
+
+.model-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+.model-image {
+  position: relative;
+  width: 40%;
+  height: 40%;
+  overflow: hidden;
+}
+
+.model-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.model-image:hover .overlay {
+  display: flex;
+}
+
+.overlay-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.overlay-button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
