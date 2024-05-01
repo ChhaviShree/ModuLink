@@ -52,8 +52,13 @@ const LoggedInNavbar = () => {
           </MenuItem>
           <MenuItem>Requests</MenuItem>
           <MenuItem>Profile</MenuItem>
-          <MenuItem>
-            {/* Warning re colour for log out */}
+          <MenuItem
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("type");
+              window.location.href = "/";
+            }}
+          >
             <Box color="red.500">Log Out</Box>
           </MenuItem>
         </MenuList>
