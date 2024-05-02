@@ -1,122 +1,112 @@
 .feedback {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .feedback-list {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  
-  }
-  
-  .feedback-box {
-    display: flex;
-    align-items: center;
-    height: 180px;
-    width: 438px;
-    background-color: #2d0d0d;
-    /*background-color: #570303;*/
-    margin-top: 60px;
-    padding: 10px;
-    margin-right:10px;
-    border: 2px solid #fafafa
-  }
-  
-  .feedback-text {
-    color: white;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 5px;
-  }
-  
-  .feedback-author {
-    font-style: italic;
-    color: #ebe8e8;
-  }
-  
-  .feedback-form {
-    width: 500px;
-    height: 60px;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-  }
-  
-  .feedback-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .submit-button {
-    font-size: 20px;
-    font-style: bold;
-    width: 200px;
-    margin-left: 20px;
-    padding: 5px 20px;
-    background: transparent;
-    color: rgb(158, 205, 247);
-    border-color: rgb(108, 167, 219);
-    border-radius: 5px;
-    cursor: pointer;
-    border: 2px solid rgb(108, 167, 219);
-  }
-  
-  .submit-button:hover {
-    color: white;
-    background-color: #3a668e; 
-  }
-  .delete-button {
-    display: block;
-    margin-top: auto;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    background-color: #d17206;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .delete-button:hover {
-    background-color: #cc0000;
-  }
-  @media(max-width: 1280px) {
-    .feedback-box {
-        width: 400px;
-    }
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media(max-width: 1024px) {
-    .feedback-box {
-        width: 350px;
-    }
-
-    .feedback-input {
-        width: 80%;
-    }
-
-    .submit-button {
-        width: 150px;
-    }
+.arrow-icon {
+  font-size: 2em;
+  color: #333;
 }
 
-@media(max-width: 800px) {
-    .feedback-box {
-        width: 300px;
-    }
+.feedback-form {
+  width: 100%;
 }
 
-@media(max-width: 500px) {
-    .feedback-box {
-        width: 250px;
-    }
+.feedback-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color:  #3a668e;
+  color: rgb(255, 251, 251);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #14a52a;
+}
+
+.feedback-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.feedback-card {
+  width: calc(100% - 20px);
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.feedback-card textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: transparent;
+  resize: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.author {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+.delete-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c9302c;
+}
+
+@media (min-width: 768px) {
+  .feedback-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .feedback {
+    max-width: 1100px;
+  }
+
+  .feedback-card {
+    width: calc(33.33% - 20px);
+  }
+}
+
+@media (min-width: 1920px) {
+  .feedback {
+    max-width: 1920px;
+  }
+
+  .feedback-card {
+    width: calc(25% - 20px);
+  }
 }
