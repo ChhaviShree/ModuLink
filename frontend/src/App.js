@@ -23,7 +23,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/vendor-view" element={<VendorView />} />
           <Route path="/models" element={<ThreeDModels />} />
           <Route path="/model-view" element={<ModelView />} />
           <Route path="/customer-login" element={<CustomerLogin />} />
@@ -36,6 +35,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:id" element={<SharedBlog />} />
+            <Route path="vendor-view" element={<VendorView />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,10 @@
 import Navbar from "../../Components/Navbar/Navbar";
 import "./ThreeDModels.css";
 import { useNavigate } from "react-router-dom";
+import Manchester from "./MANCHESTER.jpg";
+import BayView from "./Bayview.jpg";
+import NewPort from "./Newport.jpg";
+import RidgeField from "./Ridgefield.jpg";
 const ThreeDModels = () => {
   const navigate = useNavigate();
   return (
@@ -10,10 +14,7 @@ const ThreeDModels = () => {
       <div className="model-container">
         <div className="model-card">
           <div className="model-image">
-            <img
-              src="https://keymodularhomes.com/wp-content/uploads/2020/11/MC9A3197.jpg"
-              alt="THE BAYVIEW"
-            />
+            <img src={BayView} alt="THE BAYVIEW" />
             <div className="overlay">
               <div className="overlay-text">THE BAYVIEW</div>
               <button
@@ -32,10 +33,7 @@ const ThreeDModels = () => {
           </div>
 
           <div className="model-image">
-            <img
-              src="https://keymodularhomes.com/wp-content/uploads/2016/05/chesapeake-exterior.jpg"
-              alt="THE NEWPORT"
-            />
+            <img src={NewPort} alt="THE NEWPORT" />
             <div className="overlay">
               <div className="overlay-text">THE NEWPORT</div>
               <button
@@ -54,10 +52,7 @@ const ThreeDModels = () => {
           </div>
 
           <div className="model-image">
-            <img
-              src="https://keymodularhomes.com/wp-content/uploads/2016/05/ridgefield-exterior.jpg"
-              alt="THE RIDGEFIELD"
-            />
+            <img src={RidgeField} alt="THE RIDGEFIELD" />
             <div className="overlay">
               <div className="overlay-text">THE RIDGEFIELD</div>
               <button
@@ -76,10 +71,7 @@ const ThreeDModels = () => {
           </div>
 
           <div className="model-image">
-            <img
-              src="https://keymodularhomes.com/wp-content/uploads/2016/05/chesapeake-exterior.jpg"
-              alt="THE MANCHESTER"
-            />
+            <img src={Manchester} alt="THE MANCHESTER" />
             <div className="overlay">
               <div className="overlay-text">THE MANCHESTER</div>
               <button

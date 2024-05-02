@@ -2,21 +2,13 @@ import React, { useState } from "react";
 import "./VendorLogin.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  AlertDialog,
-  AlertDialogOverlay,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogBody,
-} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 const VendorLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -50,11 +42,7 @@ const VendorLogin = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("type", "Vendor");
       setLoading(false);
-      setLoginSuccess(true);
-      setTimeout(() => {
-        setLoginSuccess(false);
-        window.location.href = "/vendor-view";
-      }, 4000);
+      window.location.href = "/user/blog";
     } catch (error) {
       setLoginError("Invalid email or password. Please try again.");
       setLoading(false);
@@ -119,22 +107,6 @@ const VendorLogin = () => {
           </form>
         </div>
       </div>
-      <AlertDialog
-        isOpen={loginSuccess}
-        leastDestructiveRef={null}
-        onClose={() => setLoginSuccess(false)}
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Login Successful
-            </AlertDialogHeader>
-            <AlertDialogBody>
-              You have been successfully logged in. Redirecting to VendorView...
-            </AlertDialogBody>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
     </div>
   );
 };

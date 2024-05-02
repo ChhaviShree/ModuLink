@@ -6,7 +6,6 @@ import {
   MenuList,
   MenuItem,
   IconButton,
-  HamburgerIcon,
 } from "@chakra-ui/react";
 
 import logo from "../Assets/finallogo.png";
@@ -40,8 +39,6 @@ const LoggedInNavbar = () => {
           }
           variant="outline"
         />
-
-        {/* Menu Items */}
         <MenuList>
           <MenuItem
             onClick={() => {
@@ -50,7 +47,17 @@ const LoggedInNavbar = () => {
           >
             Posts
           </MenuItem>
-          <MenuItem>Requests</MenuItem>
+          {localStorage.getItem("type") === "User" ? (
+            <MenuItem>Build Your House</MenuItem>
+          ) : (
+            <MenuItem
+              onClick={() => {
+                window.location.href = "/user/vendor-view";
+              }}
+            >
+              Vendor Location
+            </MenuItem>
+          )}
           <MenuItem>Profile</MenuItem>
           <MenuItem
             onClick={() => {
