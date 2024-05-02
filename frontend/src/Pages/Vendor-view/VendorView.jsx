@@ -131,7 +131,7 @@ export default function VendorView() {
       });
 
       const response = await fetch(
-        "http://localhost:4000/vendor-details/add-vendor-details",
+        "https://modu-link.vercel.app/vendor-details/add-vendor-details",
         {
           method: "POST",
           headers: {
