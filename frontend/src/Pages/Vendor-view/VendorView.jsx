@@ -48,6 +48,8 @@ export default function VendorView() {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [addImageModal, setAddImageModal] = useState(false);
   const [profilePhotos, setProfilePhotos] = useState([]);
+  const [imageUploadLoader, setImageUploadLoader] = useState(false);
+  const [submitLoader, setSubmitLoader] = useState(false);
   const cancelRef = useRef();
 
   const handleAddLocation = () => {
@@ -94,6 +96,7 @@ export default function VendorView() {
     setLocations(updatedLocationsWithBanners);
   };
   const handleImageUpload = async () => {
+    setImageUploadLoader(true);
     const apiKey = "4b10ae2f8c724e32c293659abe5af74b";
     const uploadUrl = "https://api.imgbb.com/1/upload";
     try {
@@ -114,11 +117,13 @@ export default function VendorView() {
       updatedLocations[selectedLocation.id - 1].images = imageUrls;
       setLocations(updatedLocations);
       setAddImageModal(false);
+      setImageUploadLoader(false);
     } catch (error) {
       console.error("Error uploading images:", error);
     }
   };
   const handleSubmit = async () => {
+    setSubmitLoader(true);
     try {
       const modifiedLocations = locations.map((location) => {
         const { name, description, houses, images } = location;
@@ -138,11 +143,11 @@ export default function VendorView() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-          body: JSON.stringify({ locations: modifiedLocations }), // Send the modified locations array
+          body: JSON.stringify({ locations: modifiedLocations }),
         }
       );
       const data = await response.json();
-      console.log("Data:", data);
+      setSubmitLoader(false);
     } catch (error) {
       console.error("Error submitting data:", error);
     }
@@ -327,6 +332,9 @@ export default function VendorView() {
                     type="file"
                     multiple
                     placeholder="Add Image"
+                    style={{
+                      color: "black",
+                    }}
                     onChange={handlePhotoChange}
                   />
                   <Text fontSize="sm" mt={2}>
@@ -340,7 +348,12 @@ export default function VendorView() {
                   >
                     Cancel
                   </Button>
-                  <Button colorScheme="blue" ml={3} onClick={handleImageUpload}>
+                  <Button
+                    colorScheme="blue"
+                    ml={3}
+                    onClick={handleImageUpload}
+                    isLoading={imageUploadLoader}
+                  >
                     Add Images
                   </Button>
                 </AlertDialogFooter>
@@ -368,7 +381,11 @@ export default function VendorView() {
         )}
 
         <div className="loc-button">
-          <Button colorScheme="green" onClick={handleSubmit}>
+          <Button
+            colorScheme="green"
+            onClick={handleSubmit}
+            isLoading={submitLoader}
+          >
             Submit All Data
           </Button>
         </div>
