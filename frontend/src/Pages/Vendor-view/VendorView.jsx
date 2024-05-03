@@ -138,7 +138,7 @@ export default function VendorView() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-          body: JSON.stringify({ locations: modifiedLocations }), // Send the modified locations array
+          body: JSON.stringify({ locations: modifiedLocations }), 
         }
       );
       const data = await response.json();
