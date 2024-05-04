@@ -48,7 +48,13 @@ const LoggedInNavbar = () => {
             Posts
           </MenuItem>
           {localStorage.getItem("type") === "User" ? (
-            <MenuItem>Build Your House</MenuItem>
+            <MenuItem
+              onClick={() => {
+                window.location.href = "/user/build-house";
+              }}
+            >
+              Build Your House
+            </MenuItem>
           ) : (
             <MenuItem
               onClick={() => {

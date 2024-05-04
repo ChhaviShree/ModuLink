@@ -15,6 +15,7 @@ import Blog from "./Pages/Blog/Blog";
 import SharedBlog from "./Pages/Blog/SharedBlog";
 import ThreeDModels from "./Pages/Landing/ThreeDModels";
 import ModelView from "./Pages/Landing/ModelView";
+import BuildHouse from "./Pages/Build House/BuildHouse";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:id" element={<SharedBlog />} />
             <Route path="vendor-view" element={<VendorView />} />
+            <Route path="build-house" element={<BuildHouse />} />
           </Route>
         </Routes>
       </BrowserRouter>
